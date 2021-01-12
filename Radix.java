@@ -3,4 +3,8 @@ public class Radix{
     int x = ((n / (int)Math.pow(10, col)) % 10);
     return x;
   }
+
+  public static int length(int n){
+    
+  }
 }
