@@ -34,8 +34,8 @@ public class Radix{
 
 
   public static void merge(SortableLinkedList original, SortableLinkedList[]buckets){
-    for (SortableLinkedList bucket : buckets){
-      original.extend(bucket);
+    for(int i = 0; i < buckets.length; i++){
+      original.extend(buckets[i]);
     }
   }
 
@@ -48,7 +48,7 @@ public class Radix{
       buckets[i] = new SortableLinkedList();
     }
 
-    do{
+    do {
         while (data.size() > 0){
           int shift = data.get(0);
           data.remove(0);
@@ -80,9 +80,10 @@ public class Radix{
     radixSortSimple(positive);
     radixSortSimple(negative);
 
-    data.extend(negative);
-    data.extend(positive);
+    data.extend(negative) ;
+    data.extend(positive) ;
 
+    //commit
 
   }
 
