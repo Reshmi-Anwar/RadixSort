@@ -62,36 +62,28 @@ public class Radix{
   */
 
 
-
-
-
-
   public static void radixSortSimple(SortableLinkedList data){
     SortableLinkedList[] buckets = new SortableLinkedList[10];
-    int numDigit = -1;
+    int numOfDigit = -100;
     int digitPlace = 0; //starts checking at ones place
     for(int i = 0; i < 10; i++){ //creates buckets 0 - 9
       buckets[i] = new SortableLinkedList();
     }
+    do{
     while (data.size() > 0){
       int shift = data.get(0);
       data.remove(0);
-      if (numDigit < length(shift)){
-        numDigit = length(shift); //establishes the number of passes based on the greatest num of digits
+      if (numOfDigit < length(shift)){ //this is always true
+        numOfDigit = length(shift); //establishes the number of passes based on the greatest num of digits
         buckets[nth(shift, digitPlace)].add(shift);
       }
     }
     merge(data, buckets);
-    digitPlace ++;
-
-
-    /*
-    int digitPlace = 0;
-    while(data.size() > 0){
-      int iterativeValue = data.remove(0);
-      if
-    }
-    */
+    digitPlace++;
+  } while (numOfDigit > digitPlace);
+  }
+  
+  public static void radixSort(SortableLinkedList data){
 
   }
 
