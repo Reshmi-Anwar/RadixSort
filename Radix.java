@@ -12,11 +12,11 @@ public class Radix{
       n = Math.abs(n);
     }
     int lengthNum = (int) Math.log10(n) + 1;
-    return lengthNum;
+    return Math.abs(lengthNum);
   }
 
   //simple tester cases from class notes
-  public static void main(String args[]){
+  /*public static void main(String args[]){
     System.out.println("Nth");
     System.out.println(nth(123, 1));
     System.out.println(nth(-123, 1));
@@ -27,5 +27,12 @@ public class Radix{
     System.out.println(length(15));
     System.out.println(length(-10));
     System.out.println(length(4759));
+  }
+  */
+
+  public static void merge(SortableLinkedList original, SortableLinkedList[]buckets){
+    for (SortableLinkedList bucket : buckets){
+      original.extend(bucket);
+    }
   }
 }
