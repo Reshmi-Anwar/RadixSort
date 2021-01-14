@@ -1,7 +1,11 @@
 public class Radix{
   public static int nth(int n, int col){
+    return Math.abs(((n / (int)Math.pow(10, col)) % 10));
+    //cut out unnecessary variable
+    /*
     int x = ((n / (int)Math.pow(10, col)) % 10);
     return Math.abs(x);
+    */
   }
 
   public static int length(int n){
@@ -11,9 +15,11 @@ public class Radix{
     if (n < 0){
       n = Math.abs(n);
     }
-
-    int lengthNum = (int) Math.log10(n) + 1;
+    return Math.abs((int) Math.log10(n) + 1);
+    //cut out unnecessary variable
+    /*int lengthNum = (int) Math.log10(n) + 1;
     return Math.abs(lengthNum);
+    */
   }
 
   //simple tester cases from class notes
@@ -42,7 +48,7 @@ public class Radix{
 
   public static void radixSortSimple(SortableLinkedList data){
     SortableLinkedList[] buckets = new SortableLinkedList[10];
-    int numOfDigit = -170000000; //any number fits in here, its only important that its neg
+    int numOfDigit = -1700000; //any number fits in here, its only important that its neg
     int digitPlace = 0; //starts checking at ones place
     for(int i = 0; i < 10; i++){ //creates buckets 0 - 9
       buckets[i] = new SortableLinkedList();
@@ -50,8 +56,8 @@ public class Radix{
 
     do {
         while (data.size() > 0){
-          int shift = data.get(0);
-          data.remove(0);
+          int shift = data.remove(0);
+          //data.remove(0); consolidated code instead of storing get(0) then removing
           if (numOfDigit < length(shift)){ //this is always true
             numOfDigit = length(shift);//establishes the number of passes based on the greatest num of digits
           }
@@ -80,10 +86,10 @@ public class Radix{
     radixSortSimple(positive);
     radixSortSimple(negative);
 
-    data.extend(negative) ;
+    data.extend(negative);
     data.extend(positive) ;
 
-    //commit
+
 
   }
 
