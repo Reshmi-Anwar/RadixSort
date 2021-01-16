@@ -73,22 +73,22 @@ public class Radix{
 
     SortableLinkedList positive = new SortableLinkedList();
     SortableLinkedList negative = new SortableLinkedList();
-    while (data.size() > 0){
+    while(data.size() > 0){
       int shift = data.get(0);
       data.remove(0);
-      if (shift < 0){
-        negative.add(Math.abs(shift));
+      if (shift >= 0){
+        positive.add(shift);
       }
       else{
-        positive.add(shift);
+        negative.add(shift);
       }
     }
     radixSortSimple(positive);
     radixSortSimple(negative);
-
-    data.extend(negative);
-    data.extend(positive) ;
-
+    while(negative.size() > 0){
+      data.add(negative.remove(negative.size() - 1));
+    }
+    data.extend(positive);
 
 
   }
